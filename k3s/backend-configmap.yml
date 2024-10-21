@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-configmap
+data:
+  MONGO_LOCAL_CURRENT_DATABASE: schedules
+  DEFAULT_SERVER_CLUSTER: mongodb

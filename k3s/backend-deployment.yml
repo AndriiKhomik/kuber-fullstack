@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: andriikhomik/java-fullstack:backend-latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+        env:
+          - name: MONGO_LOCAL_CURRENT_DATABASE
+            valueFrom:
+              configMapKeyRef:
+                name: backend-configmap
+                key: MONGO_LOCAL_CURRENT_DATABASE
+          - name: DEFAULT_SERVER_CLUSTER
+            valueFrom:
+              configMapKeyRef:
+                name: backend-configmap
+                key: DEFAULT_SERVER_CLUSTER
