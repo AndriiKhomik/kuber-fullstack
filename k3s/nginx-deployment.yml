@@ -23,4 +23,10 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 80
+        env:
+          - name: REACT_APP_API_BASE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: nginx-config
+                key: REACT_APP_API_BASE_URL
           
