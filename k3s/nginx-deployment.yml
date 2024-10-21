@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: andriikhomik/java-fullstack:frontend-latest
+        image: andriikhomik/nginx-frontend:latest
         resources:
           limits:
             memory: "128Mi"
