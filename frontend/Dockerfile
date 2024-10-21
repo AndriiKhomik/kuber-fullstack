@@ -1,12 +1,18 @@
-FROM node:14.5.0-alpine
+FROM node:14.5.0-alpine as build
 
-WORKDIR /code
-COPY package.json /code/package.json
-# COPY package-lock.json /code/package-lock.json
+WORKDIR /app
+COPY package.json /app/package.json
+COPY package-lock.json /code/package-lock.json
 
-RUN npm install
-COPY . /code
+RUN npm install 
 
-EXPOSE 3000
+COPY . /app
 
-CMD [ "npm", "start" ]
+RUN npm run build
+
+FROM nginx:stable-alpine
+
+COPY ../nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/build /srv/www/
+
+CMD [ "nginx", "-g", "daemon off;" ]
