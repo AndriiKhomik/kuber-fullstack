@@ -37,7 +37,7 @@ spec:
               configMapKeyRef:
                 name: postgres-configmap
                 key: db_name
-        volumes:
-          - name: postgres-storage
-            emptyDir: {}
+      volumes:
+        - name: postgres-storage
+          emptyDir: {}
 
