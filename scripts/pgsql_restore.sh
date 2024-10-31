@@ -15,7 +15,7 @@ filename=data.dump
 #write your user
 dbUser=postgres
 #write your database
-database=postgres_db
+database=postgres
 #write your host
 host=postgres
 #write your port
