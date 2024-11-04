@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: andriikhomik/java-fullstack:backend-latest
+        image: andriikhomik/tomcat:v2
         ports:
         - containerPort: 8080
         env:
