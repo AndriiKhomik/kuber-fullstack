@@ -1,0 +1,13 @@
+appName: nginx
+
+configmap:
+  name: nginx
+
+image:
+  repository: andriikhomik/nginx
+  tag: "v3"
+  pullPolicy: IfNotPresent
+  
+service:
+  type: ClusterIP
+  port: 80
