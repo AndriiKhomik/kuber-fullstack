@@ -1,0 +1,17 @@
+appName: postgres
+
+image:
+  repository: postgres
+  tag: latest
+
+configmap:
+  data:
+    name: postgres-configmap
+    db_name: postgres_db
+
+secrets:
+  data:
+    name: postgres-secret
+
+service:
+  port: 5432
