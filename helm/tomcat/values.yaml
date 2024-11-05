@@ -1,0 +1,13 @@
+appName: tomcat
+
+configmap:
+  data:
+    name: backend-configmap
+
+image:
+  repository: andriikhomik/tomcat
+  tag: v2
+
+service:
+  data:
+    port: 8080

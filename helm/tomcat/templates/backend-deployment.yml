@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{.Values.appName}}
+  name: {{.Values.appName}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{.Values.appName}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.appName}}
+    spec:
+      containers:
+        - name: {{.Values.appName}}
+          image: "{{.Values.image.repository}}:{{.Values.image.tag}}"
+          ports:
+            - containerPort: {{.Values.service.data.port}}
+          env:
+            - name: MONGO_LOCAL_CURRENT_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-configmap
+                  key: MONGO_LOCAL_CURRENT_DATABASE
+            - name: DEFAULT_SERVER_CLUSTER
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-configmap
+                  key: DEFAULT_SERVER_CLUSTER
