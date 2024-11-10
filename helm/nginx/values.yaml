@@ -5,7 +5,7 @@ configmap:
 
 image:
   repository: andriikhomik/nginx
-  tag: v3
+  tag: v6
   pullPolicy: IfNotPresent
   
 service:
