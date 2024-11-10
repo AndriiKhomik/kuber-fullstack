@@ -3,17 +3,13 @@ kind: Application
 metadata:
   name: nginx
   namespace: argocd
-finalizers:
-  - resources-finalizer.argocd.argoproj.io
-labels:
-  name: nginx
 spec:
   project: default
   source:
     repoURL: https://github.com/AndriiKhomik/kuber-fullstack.git
     targetRevision: HEAD
     path: helm/nginx
-  destication:
+  destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
   syncPolicy:
